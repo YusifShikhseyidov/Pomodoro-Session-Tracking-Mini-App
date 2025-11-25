@@ -1,0 +1,5 @@
+{
+  "name": "FocusFlow",
+  "description": "A smart Pomodoro timer with AI-powered productivity insights, session tracking, and customizable intervals.",
+  "requestFramePermissions": []
+}
