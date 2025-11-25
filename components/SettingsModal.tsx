@@ -48,7 +48,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
                   type="number" 
                   value={localSettings.workDuration}
                   onChange={(e) => handleChange('workDuration', Number(e.target.value))}
-                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-rose-500 outline-none"
+                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-rose-500 outline-none bg-[#14213d] text-white"
                 />
               </div>
               <div>
@@ -57,7 +57,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
                   type="number" 
                   value={localSettings.shortBreakDuration}
                   onChange={(e) => handleChange('shortBreakDuration', Number(e.target.value))}
-                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-teal-500 outline-none bg-[#14213d] text-white"
                 />
               </div>
               <div>
@@ -66,7 +66,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
                   type="number" 
                   value={localSettings.longBreakDuration}
                   onChange={(e) => handleChange('longBreakDuration', Number(e.target.value))}
-                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none bg-[#14213d] text-white"
                 />
               </div>
             </div>
@@ -116,7 +116,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
                 type="number" 
                 value={localSettings.targetSessions}
                 onChange={(e) => handleChange('targetSessions', Number(e.target.value))}
-                className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-gray-500 outline-none"
+                className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-gray-500 outline-none bg-[#14213d] text-white"
               />
             </div>
         </div>
