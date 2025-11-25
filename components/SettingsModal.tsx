@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, Volume2, VolumeX } from 'lucide-react';
 import { Settings } from '../types';
 
 interface SettingsModalProps {
@@ -29,7 +29,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-lg font-bold text-gray-800">Settings</h2>
           <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-full">
@@ -74,6 +74,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
 
           {/* Toggles */}
           <div className="space-y-4">
+            <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Preferences</h3>
+            
             <div className="flex items-center justify-between">
               <span className="text-gray-700">Auto-start Breaks</span>
               <button 
@@ -83,6 +85,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
                 <span className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform ${localSettings.autoStartBreaks ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
             </div>
+            
             <div className="flex items-center justify-between">
               <span className="text-gray-700">Auto-start Work</span>
               <button 
@@ -90,6 +93,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
                 className={`w-11 h-6 flex items-center rounded-full transition-colors ${localSettings.autoStartWork ? 'bg-green-500' : 'bg-gray-300'}`}
               >
                 <span className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform ${localSettings.autoStartWork ? 'translate-x-6' : 'translate-x-1'}`} />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-700">Sound Notifications</span>
+                {localSettings.soundEnabled ? <Volume2 className="w-4 h-4 text-gray-400" /> : <VolumeX className="w-4 h-4 text-gray-400" />}
+              </div>
+              <button 
+                onClick={() => handleChange('soundEnabled', !localSettings.soundEnabled)}
+                className={`w-11 h-6 flex items-center rounded-full transition-colors ${localSettings.soundEnabled ? 'bg-rose-500' : 'bg-gray-300'}`}
+              >
+                <span className={`w-4 h-4 bg-white rounded-full shadow transform transition-transform ${localSettings.soundEnabled ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
             </div>
           </div>

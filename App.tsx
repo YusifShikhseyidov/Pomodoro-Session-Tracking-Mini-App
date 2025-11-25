@@ -80,10 +80,10 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen ${getBgTheme()} theme-transition flex flex-col items-center relative`}>
+    <div className={`min-h-screen ${getBgTheme()} theme-transition flex flex-col items-center relative overflow-hidden`}>
       
       {/* Header */}
-      <header className="w-full max-w-3xl p-6 flex justify-between items-center z-10 shrink-0">
+      <header className="w-full max-w-3xl p-6 flex justify-between items-center z-20 shrink-0">
         <div className="flex items-center gap-2">
           <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${getButtonTheme()}`}>
             <Brain className="w-5 h-5" />
@@ -107,10 +107,10 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="w-full max-w-md mx-auto flex flex-col items-center z-0 flex-1 justify-center px-4 pb-32">
+      <main className="w-full max-w-md mx-auto flex flex-col items-center z-10 flex-1 justify-start pt-8 sm:justify-center sm:pt-0 px-4 pb-40 overflow-y-auto">
         
         {/* Mode Toggles */}
-        <div className="bg-white/60 p-1 rounded-full flex mb-8 shadow-sm backdrop-blur-sm">
+        <div className="bg-white/60 p-1 rounded-full flex mb-8 shadow-sm backdrop-blur-sm z-10">
           {(Object.keys(TimerMode) as TimerMode[]).map((m) => (
             <button
               key={m}
@@ -128,7 +128,8 @@ function App() {
         <div className="relative mb-8 group">
           {/* Progress Ring */}
           <div className="w-72 h-72 sm:w-80 sm:h-80 relative flex items-center justify-center">
-             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 320 320">
+             {/* Extended viewBox to prevent clipping */}
+             <svg className="w-full h-full transform -rotate-90" viewBox="-5 -5 330 330">
                 <circle
                   cx="160"
                   cy="160"
@@ -187,14 +188,14 @@ function App() {
         </div>
 
         {/* AI Insight Section */}
-        <div className="w-full">
+        <div className="w-full z-10">
           <AIInsight sessions={sessions} isOpen={true} />
         </div>
 
       </main>
 
       {/* Footer / Today's Stats Summary */}
-      <div className="fixed bottom-0 w-full p-6 bg-white/80 backdrop-blur-md border-t border-gray-100 flex justify-center items-center gap-8 text-sm text-gray-600 z-20">
+      <div className="fixed bottom-0 w-full p-6 bg-white/80 backdrop-blur-md border-t border-gray-100 flex justify-center items-center gap-8 text-sm text-gray-600 z-30 safe-area-bottom">
         <div className="flex flex-col items-center">
           <span className="font-bold text-gray-900 text-lg">
             {sessions.filter(s => s.mode === TimerMode.WORK && s.completed && new Date(s.timestamp).toDateString() === new Date().toDateString()).length}

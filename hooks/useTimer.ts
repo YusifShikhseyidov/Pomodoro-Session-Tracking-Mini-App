@@ -34,7 +34,9 @@ export const useTimer = (settings: Settings) => {
   }, [settings]);
 
   const handleComplete = useCallback(() => {
-    playNotificationSound();
+    if (settings.soundEnabled) {
+      playNotificationSound();
+    }
     
     // Save session if it was work
     if (mode === TimerMode.WORK) {

@@ -17,6 +17,7 @@ export interface Settings {
   autoStartBreaks: boolean;
   autoStartWork: boolean;
   targetSessions: number;
+  soundEnabled: boolean;
 }
 
 export interface Session {
@@ -34,4 +35,5 @@ export const DEFAULT_SETTINGS: Settings = {
   autoStartBreaks: false,
   autoStartWork: false,
   targetSessions: 4,
+  soundEnabled: true,
 };
